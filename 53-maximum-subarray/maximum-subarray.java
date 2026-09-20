@@ -10,14 +10,11 @@ class Solution {
             if (sum > sum1) {
                 sum1 = sum;
             }
-
             if (sum < 0) {
                 sum = 0;
             }
-
             i++;
         }
-
         return sum1;
     }
 }

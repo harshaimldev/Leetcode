@@ -58,7 +58,9 @@ class Solution {
                 }
                     int w = i-l-1;
                     int currentArea = h*w;
-                    maxArea = Math.max(currentArea,maxArea);
+                    if (maxArea<currentArea){
+                        maxArea = currentArea;
+                    }
                 }
                 if (i<heights.length){
                 stack.push(i);

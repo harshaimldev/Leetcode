@@ -37,35 +37,34 @@ interface sMethods{
 class Solution {
     public int largestRectangleArea(int[] heights) {
         stackIMS stack = new stackIMS(heights.length);
-        int currentHeight = 0; 
-        int maxArea=0;
-        for (int i=0; i<=heights.length; i++){
-            if (i==heights.length){
-                currentHeight=0;
-            }
-            else{
-                currentHeight = heights[i];
-            }
-            while(!stack.isEmpty() &&
-            heights[stack.peek()]>currentHeight){
-                int h = heights[stack.pop()];
-                int l=0;
-                if (stack.isEmpty()){
-                    l = -1;
+        int currh = 0;
+        int maxarea=0;
+            for (int i=0; i<=heights.length; i++){
+                if (i==heights.length){
+                    currh = 0;
                 }
                 else{
-                    l = stack.peek();
+                    currh = heights[i];
                 }
-                    int w = i-l-1;
-                    int currentArea = h*w;
-                    if (maxArea<currentArea){
-                        maxArea = currentArea;
+                while(!stack.isEmpty() &&
+                    heights[stack.peek()]>currh){
+                        int h = heights[stack.pop()];
+                        int l=0;
+                        if(stack.isEmpty()){
+                            l=-1;
+                        }
+                        else{
+                            l=stack.peek();
+                        }
+                        int w = i -l-1;
+                        int currArea = h*w;
+
+                        if (maxarea<currArea){
+                            maxarea = currArea;
+                        }
                     }
-                }
-                if (i<heights.length){
-                stack.push(i);
-                }
+                    if (i<heights.length){ stack.push(i);}
             }
-        return maxArea;
+            return maxarea;
         }
     }
